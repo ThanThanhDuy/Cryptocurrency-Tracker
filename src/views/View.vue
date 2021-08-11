@@ -19,6 +19,7 @@
           :symbol="coinDetail.symbol"
           :rank="coinDetail.rank"
           :category="coinDetail.category"
+          :tagName="coinDetail.tagName"
         />
         <PricePer
           :name="coinDetail.name"
@@ -39,7 +40,33 @@
         <v-col lg="8" class="mt-12">
           <ChartCoin :lables="lables" :dataChart="coinDetail.dataChart" />
         </v-col>
-        <v-col lg="4" class=""></v-col>
+        <v-col lg="4" class="mt-8">
+          <v-container>
+            <div>
+              <p class="font-weight-bold">Description:</p>
+              <p>{{ coinDetail.des }}</p>
+            </div>
+            <div>
+              <p class="font-weight-bold">Website:</p>
+              <p v-for="(url, index) in coinDetail.website">
+                <a
+                  :key="index"
+                  :href="url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {{ url }}
+                </a>
+              </p>
+            </div>
+            <div>
+              <span class="font-weight-bold">
+                Date Added:
+              </span>
+              <span class="ml-3 font-weight-normal">{{ getDate }}</span>
+            </div>
+          </v-container>
+        </v-col>
       </v-row>
     </v-container>
     <v-container v-if="!coinDetail">
@@ -101,6 +128,11 @@ export default {
         date.push(moment(yesterday).format('MMM DD'))
       }
       return date.reverse()
+    },
+    getDate() {
+      return moment(
+        this.coinTmp.find(coin => coin.id == this.id).dateAdded
+      ).format('YYYY-MM-DD')
     }
   }
 }
@@ -135,6 +167,12 @@ export default {
 
     pointer-events: none;
     font-size: 12px;
+  }
+  .btn-tag {
+    padding: 5px !important;
+    max-height: 25px !important;
+    font-size: 12px;
+    text-transform: none !important;
   }
   .view__price {
     font-size: 45px;

@@ -26,10 +26,28 @@
         {{ category }}
       </v-btn>
     </v-container>
+    <v-container>
+      <div>
+        <v-btn
+          v-for="(tag, index) in tagName"
+          :key="index"
+          color="rgba(122, 122, 122,0.2)"
+          class="black--text mr-2 btn-tag mb-2"
+        >
+          <span>
+            {{ tag }}
+
+            <UilExternalLinkAlt />
+          </span>
+        </v-btn>
+      </div>
+    </v-container>
   </v-col>
 </template>
 
 <script>
+import { UilExternalLinkAlt } from '@iconscout/vue-unicons'
+
 export default {
   name: 'NameSymbol',
   props: {
@@ -47,7 +65,13 @@ export default {
     },
     category: {
       type: String
+    },
+    tagName: {
+      type: Array
     }
+  },
+  components: {
+    UilExternalLinkAlt
   }
 }
 </script>

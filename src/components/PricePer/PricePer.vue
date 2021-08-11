@@ -6,7 +6,7 @@
         <span class="font-weight-bold ">{{ symbol }}</span>
         )
       </p>
-      <div class="d-flex align-center mt-0">
+      <div class="d-flex align-center mt-3">
         <span class="font-weight-bold view__price">
           {{
             new Intl.NumberFormat('en-US', {
@@ -36,7 +36,7 @@
           <span class="pr-1">{{ per1h.toFixed(2) * -1 }}%</span>
         </v-btn>
       </div>
-      <div class="d-flex align-center">
+      <div class="d-flex align-center mt-3">
         <div>
           <span>Low:</span>
           <span class="font-weight-bold">

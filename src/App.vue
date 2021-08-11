@@ -1,20 +1,22 @@
 <template>
   <v-app>
     <v-app-bar app class="px-lg-15 px-md-10 px-sm-5">
-      <div class="d-flex align-center">
+      <router-link to="/" class="d-flex align-center link__page--main">
         <v-img
           alt="Vuetify Logo"
-          class="shrink mr-2"
+          class="shrink mr-2 header__logo"
           contain
           :src="coinIcon"
           transition="scale-transition"
           width="40"
         />
-        <h1 class="header__title">Cryptocurrency</h1>
-      </div>
+        <h1 class="header__title black--text">
+          Cryptocurrency
+        </h1>
+      </router-link>
 
       <v-spacer />
-      <router-link to="/">
+      <router-link to="/" class="mr-5 nav-link black--text">
         <span class="font-weight-bold">Home</span>
       </router-link>
       <v-btn color="#b4dd7f" class="btn_signin">Sign in</v-btn>
@@ -52,7 +54,14 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.header__logo {
+  cursor: pointer;
+}
+.link__page--main {
+  text-decoration: none;
+}
 .header__title {
+  cursor: pointer;
   @media screen and (max-width: 525px) {
     display: none;
   }
@@ -83,5 +92,8 @@ export default {
 .v-sheet.v-app-bar.v-toolbar:not(.v-sheet--outlined) {
   box-shadow: -1px -8px 20px -1px rgba(0, 0, 0, 0.2),
     1px -19px 20px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+.nav-link {
+  text-decoration: none;
 }
 </style>

@@ -21,6 +21,7 @@ export default new Vuex.Store({
         const res2 = await axiosCoinFirst.getCoinDetail()
         if (res1 && res2) {
           const desert = []
+          let countTMp = 0
           for (const item of res1.data) {
             const dataTmpChartSparkLines = () => {
               const len = 10
@@ -45,7 +46,22 @@ export default new Vuex.Store({
                   ).toFixed(2)
               )
             }
-            console.log(dataChartTmp())
+            const getTagName = () => {
+              const arr = []
+              let count = 0
+              for (
+                let i = 0;
+                i < res2.data[item.id]['tag-names'].length - 1;
+                i++
+              ) {
+                if (count < 5 && res2.data[item.id]['tag-names'][i]) {
+                  arr.push(res2.data[item.id]['tag-names'][i])
+                  count++
+                } else break
+              }
+              return arr
+            }
+
             desert.push({
               id: item.id,
               rank: item.cmc_rank,
@@ -71,7 +87,11 @@ export default new Vuex.Store({
               marketCapSupplying:
                 item.quote.USD.price.toFixed(2) * item.circulating_supply
                   ? item.circulating_supply.toFixed(0)
-                  : item.circulating_supply
+                  : item.circulating_supply,
+              des: res2.data[item.id].description,
+              website: res2.data[item.id].urls.website,
+              dateAdded: res2.data[item.id].date_added,
+              tagName: getTagName()
             })
           }
           commit('SET_COIN', desert)
