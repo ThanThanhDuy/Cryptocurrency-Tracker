@@ -1,14 +1,16 @@
 <template>
   <v-container class="ma-0 pa-0 cointainer__box">
-    <v-container class="mx-10 mt-3 mb-3">
+    <v-container class="mt-3 mb-3 search__container">
       <v-row>
         <v-col lg="2">
           <v-text-field label="Search" v-model="txtSearch" solo></v-text-field>
         </v-col>
       </v-row>
     </v-container>
-    <v-divider></v-divider>
-    <v-container class="mx-10 box__table">
+    <v-container class="divi__container">
+      <v-divider></v-divider>
+    </v-container>
+    <v-container class="box__table">
       <v-layout child-flex>
         <v-data-table
           :headers="headers"
@@ -187,7 +189,32 @@ export default {
 
 <style lang="scss">
 .cointainer__box {
-  max-width: calc(100% - 80px);
+  max-width: calc(100vw);
+  .box__table,
+  .search__container,
+  .divi__container {
+    @media screen and (max-width: 1904px) {
+      max-width: 1800px;
+    }
+    @media screen and (max-width: 1830px) {
+      max-width: 1600px;
+    }
+    @media screen and (max-width: 1660px) {
+      max-width: 1400px;
+    }
+    @media screen and (max-width: 1460px) {
+      max-width: 1200px;
+    }
+    @media screen and (max-width: 1240px) {
+      max-width: 1000px;
+    }
+    @media screen and (max-width: 910px) {
+      max-width: 800px;
+    }
+    @media screen and (max-width: 732px) {
+      max-width: 600px;
+    }
+  }
 }
 .v-data-table {
   line-height: 4.5 !important;
@@ -197,14 +224,113 @@ export default {
     font-weight: bold;
     color: #000;
   }
-
+  .v-data-table__wrapper table .v-data-table-header tr th {
+    &:first-child {
+      min-width: 70px;
+    }
+    &:nth-child(2) {
+      min-width: 270px;
+    }
+    &:nth-child(3) {
+      min-width: 130px;
+    }
+    &:nth-child(4) {
+      min-width: 100px;
+      @media screen and (max-width: 732px) {
+        display: none;
+      }
+      // @media screen and (max-width: 599px) {
+      //   display: block;
+      // }
+    }
+    &:nth-child(5) {
+      min-width: 100px;
+      @media screen and (max-width: 732px) {
+        display: none;
+      }
+    }
+    &:nth-child(6) {
+      min-width: 180px;
+      @media screen and (max-width: 910px) {
+        display: none;
+      }
+    }
+    &:nth-child(7) {
+      min-width: 180px;
+      @media screen and (max-width: 1460px) {
+        display: none;
+      }
+    }
+    &:nth-child(8) {
+      min-width: 200px;
+      @media screen and (max-width: 1240px) {
+        display: none;
+      }
+    }
+    &:last-child {
+      min-width: 210px;
+      @media screen and (max-width: 1660px) {
+        display: none;
+      }
+      @media screen and (max-width: 599px) {
+        display: none;
+      }
+    }
+  }
   .v-data-table__wrapper table tbody tr {
     cursor: pointer;
-    td span {
-      font-size: 0.9rem;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
+    td {
+      &:nth-child(4) {
+        @media screen and (max-width: 732px) {
+          display: none;
+        }
+        @media screen and (max-width: 599px) {
+          display: flex;
+        }
+      }
+      &:nth-child(5) {
+        @media screen and (max-width: 732px) {
+          display: none;
+        }
+        @media screen and (max-width: 599px) {
+          display: flex;
+        }
+      }
+      &:nth-child(6) {
+        @media screen and (max-width: 910px) {
+          display: none;
+        }
+        @media screen and (max-width: 599px) {
+          display: flex;
+        }
+      }
+      &:nth-child(8) {
+        @media screen and (max-width: 1240px) {
+          display: none;
+        }
+        @media screen and (max-width: 599px) {
+          display: flex;
+        }
+      }
+      &:nth-child(7) {
+        @media screen and (max-width: 1460px) {
+          display: none;
+        }
+        @media screen and (max-width: 599px) {
+          display: flex;
+        }
+      }
+      &:last-child {
+        @media screen and (max-width: 599px) {
+          display: none;
+        }
+      }
+      span {
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+      }
     }
   }
   .suplly {
@@ -213,7 +339,21 @@ export default {
   .progress {
     max-width: 200px;
   }
+  .v-data-footer__select {
+    margin-left: 0 !important;
+  }
 }
+.v-data-footer {
+  @media screen and (max-width: 440px) {
+    justify-content: center;
+  }
+  .v-data-footer__select {
+    @media screen and (max-width: 440px) {
+      display: none !important;
+    }
+  }
+}
+
 .v-text-field__details {
   display: none !important;
 }

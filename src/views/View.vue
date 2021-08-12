@@ -1,6 +1,6 @@
 <template>
   <v-container class="view__page">
-    <v-container v-if="coinDetail">
+    <div v-if="coinDetail">
       <v-breadcrumbs :items="items">
         <template v-slot:item="{ item }">
           <router-link
@@ -68,7 +68,7 @@
           </v-container>
         </v-col>
       </v-row>
-    </v-container>
+    </div>
     <v-container v-if="!coinDetail">
       <h3>NOT FOUND</h3>
     </v-container>
@@ -140,6 +140,27 @@ export default {
 
 <style lang="scss">
 .view__page {
+  @media screen and (max-width: 1904px) {
+    max-width: 1800px;
+  }
+  @media screen and (max-width: 1830px) {
+    max-width: 1600px;
+  }
+  @media screen and (max-width: 1660px) {
+    max-width: 1400px;
+  }
+  @media screen and (max-width: 1460px) {
+    max-width: 1300px;
+  }
+  @media screen and (max-width: 1240px) {
+    max-width: 1000px;
+  }
+  @media screen and (max-width: 910px) {
+    max-width: 800px;
+  }
+  @media screen and (max-width: 732px) {
+    max-width: 600px;
+  }
   .v-breadcrumbs {
     .v-breadcrumbs__item {
       color: #000;
@@ -185,12 +206,6 @@ export default {
   .view__progress {
     width: 200px;
     height: 10px !important;
-  }
-  .r1c1 {
-    border-bottom: 1px solid #000;
-  }
-  .r1c2 {
-    border-bottom: 1px solid #000;
   }
 }
 </style>

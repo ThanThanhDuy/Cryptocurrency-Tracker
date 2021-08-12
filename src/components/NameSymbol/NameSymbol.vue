@@ -1,5 +1,5 @@
 <template>
-  <v-col lg="4">
+  <v-col lg="4" md="6">
     <v-container>
       <div class="d-flex align-center ">
         <img :src="icon" width="50" />

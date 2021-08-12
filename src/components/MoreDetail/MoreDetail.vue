@@ -1,7 +1,7 @@
 <template>
-  <v-col lg="4">
-    <v-container>
-      <v-row>
+  <v-col lg="4" md="12">
+    <v-container class="box__detail">
+      <v-row class="ma-0">
         <v-col lg="6" class="r1c1">
           <div class="d-flex flex-column">
             <span>Market Cap</span>
@@ -59,7 +59,8 @@
           </div>
         </v-col>
       </v-row>
-      <v-row>
+      <v-divider></v-divider>
+      <v-row class="ma-0">
         <v-col lg="6" class="r2c1">
           <div class="d-flex flex-column">
             <span>Volume 24h</span>
@@ -159,4 +160,11 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="scss">
+.box__detail {
+  @media screen and(max-width:1263px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+</style>

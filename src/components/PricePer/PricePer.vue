@@ -1,5 +1,5 @@
 <template>
-  <v-col lg="4">
+  <v-col lg="4" md="6">
     <v-container>
       <p class="mb-0">
         {{ name }} Price (
